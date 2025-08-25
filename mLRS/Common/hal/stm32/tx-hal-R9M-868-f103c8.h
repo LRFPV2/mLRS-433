@@ -115,20 +115,20 @@ void sx_init_gpio(void)
 {
     gpio_init(SX_RESET, IO_MODE_OUTPUT_PP_HIGH, IO_SPEED_VERYFAST);
     gpio_init(SX_DIO0, IO_MODE_INPUT_PD, IO_SPEED_VERYFAST);
-    gpio_init(SX_SWITCH_RX_EN, IO_MODE_OUTPUT_PP_LOW, IO_SPEED_VERYFAST);
-    gpio_init(SX_PA_EN, IO_MODE_OUTPUT_PP_LOW, IO_SPEED_VERYFAST);
+//    gpio_init(SX_SWITCH_RX_EN, IO_MODE_OUTPUT_PP_LOW, IO_SPEED_VERYFAST);
+//    gpio_init(SX_PA_EN, IO_MODE_OUTPUT_PP_LOW, IO_SPEED_VERYFAST);
 }
 
 void sx_amp_transmit(void)
 {
-    gpio_low(SX_SWITCH_RX_EN);
-    gpio_high(SX_PA_EN);
+//    gpio_low(SX_SWITCH_RX_EN);
+//    gpio_high(SX_PA_EN);
 }
 
 void sx_amp_receive(void)
 {
-    gpio_low(SX_PA_EN);
-    gpio_high(SX_SWITCH_RX_EN);
+//    gpio_low(SX_PA_EN);
+//    gpio_high(SX_SWITCH_RX_EN);
 }
 
 void sx_dio_init_exti_isroff(void)
@@ -276,75 +276,77 @@ void fan_set_power(int8_t power_dbm)
 
 
 //-- POWER
-
-#define DEVICE_HAS_I2C_DAC
-#define I2C_USE_I2C1
-#define I2C_CLOCKSPEED_400KHZ
-#define SX_PA_DAC_I2C_DEVICE_ADR  0x0C
-
-void rfpower_calc(int8_t power_dbm, uint8_t* sx_power, int8_t* actual_power_dbm, tI2cBase* dac)
-{
-    // these are the values of ELRS
-    // 10mW   10dbm   720
-    // 25mW   14dbm   875
-    // 50mW   17dBm   1000
-    // 100mW  20dBm   1140
-    // 250mW  24dBm   1390
-    // 500mW  27dBm   1730
-    // 1000mW 30dBm   2100
-    // my estimated 1mW 0dBm 200
-    // measurements with an IRC power meter suggests changes (https://www.rcgroups.com/forums/showpost.php?p=49934177&postcount=888)
-    uint32_t voltage_mV; // 2500 was too high
-    if (power_dbm > 28) {
-        voltage_mV = 2250; // was 2100
-        *actual_power_dbm = 30;
-    } else if (power_dbm > 25) {
-        voltage_mV = 1730;
-        *actual_power_dbm = 27;
-    } else if (power_dbm > 22) {
-        //voltage_mV = 1390;
-        //*actual_power_dbm = 23;
-        voltage_mV = 1475;
-        *actual_power_dbm = 24;
-    } else if (power_dbm > 18) {
-        voltage_mV = 1195; // was 1140
-        *actual_power_dbm = 20;
-    } else if (power_dbm > 15) {
-        voltage_mV = 1000;
-        *actual_power_dbm = 17;
-    } else if (power_dbm > 12) {
-        voltage_mV = 875;
-        *actual_power_dbm = 14;
-    } else if (power_dbm > 5) {
-        voltage_mV = 720;
-        *actual_power_dbm = 10;
-    } else {
-        voltage_mV = 100; // was 200
-        *actual_power_dbm = 3; // was 0
-    }
-
-    //if (!dac->initialized) return;
-    // convert voltage to 0 .. 255
-    uint16_t value = (voltage_mV >= 3300) ? 255 : (voltage_mV * 255) / 3300; // don't bother with rounding
-    // construct data word
-    uint8_t buf[2];
-    buf[0] = (value & 0x00F0) >> 4;
-    buf[1] = (value & 0x000F) << 4;
-    dac->put_buf_blocking(SX_PA_DAC_I2C_DEVICE_ADR, buf, 2);
-
-    *sx_power = 0;
-}
-
-#define RFPOWER_DEFAULT           1 // index into rfpower_list array
-
-const rfpower_t rfpower_list[] = {
-    { .dbm = POWER_3_DBM, .mW = 2 },
-    { .dbm = POWER_10_DBM, .mW = 10 },
-    { .dbm = POWER_20_DBM, .mW = 100 },
-    { .dbm = POWER_24_DBM, .mW = 250 },
-    { .dbm = POWER_27_DBM, .mW = 500 },
-    { .dbm = POWER_30_DBM, .mW = 1000 },
-};
+#define POWER_PA_NONE_SX127X
+#include "../hal-power-pa.h"
+//
+//#define DEVICE_HAS_I2C_DAC
+//#define I2C_USE_I2C1
+//#define I2C_CLOCKSPEED_400KHZ
+//#define SX_PA_DAC_I2C_DEVICE_ADR  0x0C
+//
+//void rfpower_calc(int8_t power_dbm, uint8_t* sx_power, int8_t* actual_power_dbm, tI2cBase* dac)
+//{
+//    // these are the values of ELRS
+//    // 10mW   10dbm   720
+//    // 25mW   14dbm   875
+//    // 50mW   17dBm   1000
+//    // 100mW  20dBm   1140
+//    // 250mW  24dBm   1390
+//    // 500mW  27dBm   1730
+//    // 1000mW 30dBm   2100
+//    // my estimated 1mW 0dBm 200
+//    // measurements with an IRC power meter suggests changes (https://www.rcgroups.com/forums/showpost.php?p=49934177&postcount=888)
+//    uint32_t voltage_mV; // 2500 was too high
+//    if (power_dbm > 28) {
+//        voltage_mV = 2250; // was 2100
+//        *actual_power_dbm = 30;
+//    } else if (power_dbm > 25) {
+//        voltage_mV = 1730;
+//        *actual_power_dbm = 27;
+//    } else if (power_dbm > 22) {
+//        //voltage_mV = 1390;
+//        //*actual_power_dbm = 23;
+//        voltage_mV = 1475;
+//        *actual_power_dbm = 24;
+//    } else if (power_dbm > 18) {
+//        voltage_mV = 1195; // was 1140
+//        *actual_power_dbm = 20;
+//    } else if (power_dbm > 15) {
+//        voltage_mV = 1000;
+//        *actual_power_dbm = 17;
+//    } else if (power_dbm > 12) {
+//        voltage_mV = 875;
+//        *actual_power_dbm = 14;
+//    } else if (power_dbm > 5) {
+//        voltage_mV = 720;
+//        *actual_power_dbm = 10;
+//    } else {
+//        voltage_mV = 100; // was 200
+//        *actual_power_dbm = 3; // was 0
+//    }
+//
+//    //if (!dac->initialized) return;
+//    // convert voltage to 0 .. 255
+//    uint16_t value = (voltage_mV >= 3300) ? 255 : (voltage_mV * 255) / 3300; // don't bother with rounding
+//    // construct data word
+//    uint8_t buf[2];
+//    buf[0] = (value & 0x00F0) >> 4;
+//    buf[1] = (value & 0x000F) << 4;
+//    dac->put_buf_blocking(SX_PA_DAC_I2C_DEVICE_ADR, buf, 2);
+//
+//    *sx_power = 0;
+//}
+//
+//#define RFPOWER_DEFAULT           1 // index into rfpower_list array
+//
+//const rfpower_t rfpower_list[] = {
+//    { .dbm = POWER_3_DBM, .mW = 2 },
+//    { .dbm = POWER_10_DBM, .mW = 10 },
+//    { .dbm = POWER_20_DBM, .mW = 100 },
+//    { .dbm = POWER_24_DBM, .mW = 250 },
+//    { .dbm = POWER_27_DBM, .mW = 500 },
+//    { .dbm = POWER_30_DBM, .mW = 1000 },
+//};
 
 
 //-- TEST

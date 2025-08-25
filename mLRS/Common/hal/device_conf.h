@@ -128,11 +128,11 @@ The default selection of frequency bands can be overruled by feature defines.
 
 
 #ifdef TX_R9M_868_F103C8
-  #define DEVICE_NAME "Frsky R9M"
+  #define DEVICE_NAME "Frsky R9M - 433"
   #define DEVICE_IS_TRANSMITTER
   #define DEVICE_HAS_SX127x
-  #define FREQUENCY_BAND_868_MHZ
-  #define FREQUENCY_BAND_915_MHZ_FCC
+  #define FREQUENCY_BAND_433_MHZ
+  #define FREQUENCY_BAND_70_CM_HAM
   //#define FREQUENCY_BAND_866_MHZ_IN
 #endif
 
@@ -229,10 +229,11 @@ The default selection of frequency bands can be overruled by feature defines.
 #endif
 
 #ifdef RX_DIY_E28DUAL_BOARD02_F103CB
-  #define DEVICE_NAME "DIY DualE28 F103CB"
+  #define DEVICE_NAME "DIY RX SX1278 F103CB - 433"
   #define DEVICE_IS_RECEIVER
-  #define DEVICE_HAS_SX128x
-  #define FREQUENCY_BAND_2P4_GHZ
+  #define DEVICE_HAS_SX127x
+  #define FREQUENCY_BAND_433_MHZ
+  #define FREQUENCY_BAND_70_CM_HAM
 #endif
 
 #ifdef RX_DIY_E28_G441KB
@@ -244,10 +245,11 @@ The default selection of frequency bands can be overruled by feature defines.
 
 
 #ifdef TX_DIY_E28DUAL_BOARD02_F103CB
-  #define DEVICE_NAME "DIY DualE28 F103CB"
+  #define DEVICE_NAME "DIY TX SX1278 F103CB - 433"
   #define DEVICE_IS_TRANSMITTER
-  #define DEVICE_HAS_SX128x
-  #define FREQUENCY_BAND_2P4_GHZ
+  #define DEVICE_HAS_SX127x
+  #define FREQUENCY_BAND_433_MHZ
+  #define FREQUENCY_BAND_70_CM_HAM
 #endif
 
 #ifdef TX_DIY_E28_G431KB
@@ -282,20 +284,20 @@ The default selection of frequency bands can be overruled by feature defines.
 //-- DIY Boards, 868/915 MHz Devices
 
 #ifdef RX_DIY_E22_G441KB
-  #define DEVICE_NAME "DIY E22 G441KB"
+  #define DEVICE_NAME "DIY E22 G441KB - 433"
   #define DEVICE_IS_RECEIVER
-  #define DEVICE_HAS_SX126x
-  #define FREQUENCY_BAND_868_MHZ
-  #define FREQUENCY_BAND_915_MHZ_FCC
+  #define DEVICE_HAS_SX127x
+  #define FREQUENCY_BAND_433_MHZ
+  #define FREQUENCY_BAND_70_CM_HAM
   //#define FREQUENCY_BAND_866_MHZ_IN
 #endif
 
 #ifdef TX_DIY_E22_G431KB
-  #define DEVICE_NAME "DIY E22 G431KB"
+  #define DEVICE_NAME "DIY E22 G431KB - 433"
   #define DEVICE_IS_TRANSMITTER
-  #define DEVICE_HAS_SX126x
-  #define FREQUENCY_BAND_868_MHZ
-  #define FREQUENCY_BAND_915_MHZ_FCC
+  #define DEVICE_HAS_SX127x
+  #define FREQUENCY_BAND_433_MHZ
+  #define FREQUENCY_BAND_70_CM_HAM
   //#define FREQUENCY_BAND_866_MHZ_IN
 #endif
 

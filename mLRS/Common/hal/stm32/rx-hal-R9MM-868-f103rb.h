@@ -90,7 +90,7 @@
 
 #define SX_RESET                  IO_PC14
 #define SX_DIO0                   IO_PA15
-#define SX_DIO1                   // IO_PA1 ???
+#define SX_DIO1                   // IO_PA1 ??? --> SX1278 does not use DIO1. SX126x DOES use DIO1
 #define SX_RX_EN                  //
 #define SX_TX_EN                  //
 
