@@ -31,9 +31,9 @@ https://www.thethingsnetwork.org/forum/t/should-private-lorawan-networks-use-a-d
 //-------------------------------------------------------
 
 const tSxLoraConfiguration Sx127xLoraConfiguration[] = {
-    { .SpreadingFactor = SX1276_LORA_SF6,
+    { .SpreadingFactor = SX1276_LORA_SF9,
       .Bandwidth = SX1276_LORA_BW_500,
-      .CodingRate = SX1276_LORA_CR_4_5,
+      .CodingRate = SX1276_LORA_CR_4_7,
       .PreambleLength = 12,
       .HeaderType = SX1276_LORA_HEADER_DISABLE,
       .PayloadLength = FRAME_TX_RX_LEN,
