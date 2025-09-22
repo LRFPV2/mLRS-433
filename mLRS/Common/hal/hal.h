@@ -236,6 +236,14 @@ Note: Some "high-level" features are set for each device in the device_conf.h fi
 #include "stm32/tx-hal-diy-wioe5-e22-wle5jc.h"
 #endif
 
+//-- XRC Technologies 433MHz
+#ifdef RX_XRC_433_G431CB
+#include "stm32/rx-hal-xrc-433-g431cb.h"
+#endif
+
+#ifdef TX_XRC_433_G431CB
+#include "stm32/tx-hal-xrc-433-g431cb.h"
+#endif
 
 //-- DIY "easy-to-solder" Boards
 
