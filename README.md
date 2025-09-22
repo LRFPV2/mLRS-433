@@ -1,6 +1,9 @@
 <p align="left"><a href="https://raw.githubusercontent.com/olliw42/mLRS-docu/main/logos/mLRS_logo_long_w_slogan_1280x768.png"><img src="https://raw.githubusercontent.com/olliw42/mLRS-docu/main/logos/mLRS_logo_long_w_slogan_1280x768.png" align="center" height="153" width="256" ></a>
 
 # mLRS #
+NOTICE: THIS IS A FORK OF THE mLRS PROJECT DESIGNED FOR 433MHz OPERATION.
+https://xrctechnologies.com
+
 
 The mLRS project offers an open source 2.4 GHz & 915/868 MHz & 433 MHz/70 cm LoRa-based high-performance long-range radio link, which provides bidirectional serial connection combined with full remote control.
 
