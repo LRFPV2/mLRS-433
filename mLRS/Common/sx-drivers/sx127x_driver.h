@@ -31,15 +31,15 @@ https://www.thethingsnetwork.org/forum/t/should-private-lorawan-networks-use-a-d
 //-------------------------------------------------------
 
 const tSxLoraConfiguration Sx127xLoraConfiguration[] = {
-    { .SpreadingFactor = SX1276_LORA_SF9,
+    { .SpreadingFactor = SX1276_LORA_SF6,
       .Bandwidth = SX1276_LORA_BW_500,
-      .CodingRate = SX1276_LORA_CR_4_7,
+      .CodingRate = SX1276_LORA_CR_4_8,
       .PreambleLength = 12,
       .HeaderType = SX1276_LORA_HEADER_DISABLE,
       .PayloadLength = FRAME_TX_RX_LEN,
       .CrcEnabled = SX1276_LORA_CRC_DISABLE,
       .InvertIQ = SX1276_LORA_IQ_NORMAL,
-      .TimeOverAir = 22300,
+      .TimeOverAir = 23580,
       .ReceiverSensitivity = -112,
     }
 };
@@ -150,7 +150,7 @@ class Sx127xDriverCommon : public Sx127xDriverBase
         SetSleep(); // must be in sleep to switch to LoRa mode
         WriteRegister(SX1276_REG_OpMode, SX1276_PACKET_TYPE_LORA |
                                          SX1276_ACCESS_SHARED_REG_LORA |
-                                         SX1276_LOW_FREQUENCY_MODE_OFF |
+                                         SX1276_LOW_FREQUENCY_MODE_ON |
                                          SX1276_MODE_SLEEP);
         SetStandby();
         //SetOperationMode(SX1276_PACKET_TYPE_LORA, SX1276_LOW_FREQUENCY_MODE_OFF);

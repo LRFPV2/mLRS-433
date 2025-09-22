@@ -286,7 +286,8 @@ The default selection of frequency bands can be overruled by feature defines.
 #ifdef RX_DIY_E22_G441KB
   #define DEVICE_NAME "DIY E22 G441KB - 433"
   #define DEVICE_IS_RECEIVER
-  #define DEVICE_HAS_SX126x
+//  #define DEVICE_HAS_SX126x
+  #define DEVICE_HAS_SX127x
   #define FREQUENCY_BAND_433_MHZ
   #define FREQUENCY_BAND_70_CM_HAM
   //#define FREQUENCY_BAND_866_MHZ_IN
@@ -295,7 +296,8 @@ The default selection of frequency bands can be overruled by feature defines.
 #ifdef TX_DIY_E22_G431KB
   #define DEVICE_NAME "DIY E22 G431KB - 433"
   #define DEVICE_IS_TRANSMITTER
-  #define DEVICE_HAS_SX126x
+//  #define DEVICE_HAS_SX126x
+  #define DEVICE_HAS_SX127x
   #define FREQUENCY_BAND_433_MHZ
   #define FREQUENCY_BAND_70_CM_HAM
   //#define FREQUENCY_BAND_866_MHZ_IN
