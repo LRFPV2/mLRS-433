@@ -1,7 +1,7 @@
 <p align="left"><a href="https://raw.githubusercontent.com/olliw42/mLRS-docu/main/logos/mLRS_logo_long_w_slogan_1280x768.png"><img src="https://raw.githubusercontent.com/olliw42/mLRS-docu/main/logos/mLRS_logo_long_w_slogan_1280x768.png" align="center" height="153" width="256" ></a>
 
 # mLRS #
-NOTICE: THIS IS A FORK OF THE mLRS PROJECT DESIGNED FOR 433MHz OPERATION.
+NOTICE: THIS IS A FORK OF THE mLRS PROJECT DESIGNED FOR 433MHz OPERATION BY: 
 https://xrctechnologies.com
 
 
