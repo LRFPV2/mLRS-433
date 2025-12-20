@@ -3,6 +3,7 @@
 # mLRS #
 NOTICE: THIS IS A FORK OF THE mLRS PROJECT DESIGNED FOR 433MHz OPERATION BY: 
 https://xrctechnologies.com
+![alt text](https://xrctechnologies.com/cdn/shop/files/signal-2025-12-20-103549.jpg?v=1766256264&width=1070)
 
 
 The mLRS project offers an open source 2.4 GHz & 915/868 MHz & 433 MHz/70 cm LoRa-based high-performance long-range radio link, which provides bidirectional serial connection combined with full remote control.
